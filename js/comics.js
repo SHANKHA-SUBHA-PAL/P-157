@@ -25,30 +25,30 @@ AFRAME.registerComponent('comic-poster', {
         const thumbNailsRef = [{
                 id: "spidey",
                 title: "Spooder man",
-                url: "assets\download.jfif"
+                url: "assets\spooderman.jpg"
             },
             {
                 id: "spidey",
                 title: "Spooder man",
-                url: "assets\download.jfif"
+                url: "/assets/spooderman.jpg"
             },
             {
                 id: "spidey",
                 title: "Spooder man",
-                url: "assets\download.jfif"
+                url: "/assets/spooderman.jpg"
             },
             {
                 id: "spidey",
                 title: "Spooder man",
-                url: "assets\download.jfif"
+                url: "/assets/spooderman.jpg"
             },
         ];
 
-        let previousXPosition = -60
+        let previousXPosition = -62
         for (var item of thumbNailsRef) {
             const posX = previousXPosition + 25
-            const posY = 10
-            const posZ = -40
+            const posY = 5
+            const posZ = 0
             const position = {
                 x: posX,
                 y: posY,
@@ -56,6 +56,7 @@ AFRAME.registerComponent('comic-poster', {
             }
             previousXPosition = posX
 
+            const borderEl = this.createBorder(position, item.id);
 
             // Thumbnail Element
             const thumbNail = this.createThumbNail(item);
@@ -65,23 +66,38 @@ AFRAME.registerComponent('comic-poster', {
             const titleEl = this.createTitleEl(position, item);
             borderEl.appendChild(titleEl);
 
-            this.comicsContainer.appendChild(borderEl);
+            this.comicsContainer.appendChild(titleEl);
 
         }
+    },
+
+    createBorder: function (position, id) {
+        const entityEl = document.createElement("a-entity");
+        entityEl.setAttribute("id", id);
+        entityEl.setAttribute("visible", true);
+        entityEl.setAttribute("geometry", {
+            primitive: "ring",
+            radiusInner: 9,
+            radiusOuter: 10,
+        });
+        entityEl.setAttribute("position", position);
+        entityEl.setAttribute("material", {
+            color: "#0077CC",
+            opacity: 1,
+        });
+
+        return entityEl;
     },
 
     createThumbNail: function (item) {
         const entityEl = document.createElement("a-entity");
         entityEl.setAttribute("visible", true);
         entityEl.setAttribute("geometry", {
-            primitive: "plane",
-            width: 20,
-            height: 28
+            primitive: "cicle",
+            
         });
 
-        entityEl.setAttribute("material", {
-            src: item.url
-        });
+        entityEl.setAttribute("material", {src: item.url});
 
         return entityEl;
     },
@@ -97,7 +113,6 @@ AFRAME.registerComponent('comic-poster', {
             value: item.title,
         });
         const elPosition = position;
-        elPosition.y = -20;
         entityEl.setAttribute("position", elPosition);
         entityEl.setAttribute("visible", true);
         return entityEl;
