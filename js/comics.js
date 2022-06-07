@@ -59,7 +59,7 @@ AFRAME.registerComponent('comic-poster', {
 
         }
     },
-    //I dont know how to position the image and text so used createBorder as a kind of cheat code
+    //I dont know how to add a square border so I didnt add it
     createBorder: function (position, id) {
         const entityEl = document.createElement("a-entity");
         entityEl.setAttribute("id", id);
