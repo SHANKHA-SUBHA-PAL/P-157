@@ -10,19 +10,9 @@ AFRAME.registerComponent('comic-poster', {
         this.createCards();
     },
 
-    update: function () {
-        // Do something when component's data is updated.
-    },
-
-    remove: function () {
-        // Do something the component or its entity is detached.
-    },
-
-    tick: function (time, timeDelta) {
-        // Do something on every scene tick or frame.
-    },
     createCards: function () {
-        const thumbNailsRef = [{
+        const thumbNailsRef = [
+            {
                 id: "spidey",
                 title: "Spooder man",
                 url: "assets\spooderman.jpg"
@@ -94,7 +84,7 @@ AFRAME.registerComponent('comic-poster', {
         entityEl.setAttribute("visible", true);
         entityEl.setAttribute("geometry", {
             primitive: "cicle",
-            
+            radius:50
         });
 
         entityEl.setAttribute("material", {src: item.url});
