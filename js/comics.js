@@ -69,9 +69,9 @@ AFRAME.registerComponent('comic-poster', {
         entityEl.setAttribute("id", id);
         entityEl.setAttribute("visible", true);
         entityEl.setAttribute("geometry", {
-            primitive: "ring",
-            radiusInner: 10,
-            radiusOuter: 11,
+            primitive: "plane",
+            width: 22,
+            height: 30
         });
         entityEl.setAttribute("position", position);
         entityEl.setAttribute("material", {
@@ -87,13 +87,14 @@ AFRAME.registerComponent('comic-poster', {
         const entityEl = document.createElement("a-entity");
         entityEl.setAttribute("visible", true);
         entityEl.setAttribute("geometry", {
-            primitive: "circle",
-            radius: 10
+            primitive: "plane",
+            width: 20,
+            height: 28
         });
         entityEl.setAttribute("material", {
             src: item.url
         });
-
+        entityEl.setAttribute("position", { x: 0, y: 0, z: 0.1 });
         return entityEl;
     },
 
